@@ -232,7 +232,40 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
 	<reg32 offset="0x0397" name="RBBM_PERFCOUNTER1_LO"/>
 	<reg32 offset="0x0398" name="RBBM_PERFCOUNTER1_HI"/>
 	<reg32 offset="0x039b" name="RBBM_DEBUG"/>
-	<reg32 offset="0x039c" name="RBBM_PM_OVERRIDE1"/>
+        <reg32 offset="0x039c" name="RBBM_PM_OVERRIDE1">
+                <bitfield name="RBBM_AHBCLK_PM_OVERRIDE" pos="0"/>
+                <bitfield name="SC_REG_SCLK_PM_OVERRIDE" pos="1"/>
+                <bitfield name="SC_SCLK_PM_OVERRIDE" pos="2"/>
+                <bitfield name="SP_TOP_SCLK_PM_OVERRIDE" pos="3"/>
+                <bitfield name="SP_V0_SCLK_PM_OVERRIDE" pos="4"/>
+                <bitfield name="SQ_REG_SCLK_PM_OVERRIDE" pos="5"/>
+                <bitfield name="SQ_REG_FIFOS_SCLK_PM_OVERRIDE" pos="6"/>
+                <bitfield name="SQ_CONST_MEM_SCLK_PM_OVERRIDE" pos="7"/>
+                <bitfield name="SQ_SQ_SCLK_PM_OVERRIDE" pos="8"/>
+                <bitfield name="SX_SCLK_PM_OVERRIDE" pos="9"/>
+                <bitfield name="SX_REG_SCLK_PM_OVERRIDE" pos="10"/>
+                <bitfield name="TCM_TCO_SCLK_PM_OVERRIDE" pos="11"/>
+                <bitfield name="TCM_TCM_SCLK_PM_OVERRIDE" pos="12"/>
+                <bitfield name="TCM_TCD_SCLK_PM_OVERRIDE" pos="13"/>
+                <bitfield name="TCM_REG_SCLK_PM_OVERRIDE" pos="14"/>
+                <bitfield name="TPC_TPC_SCLK_PM_OVERRIDE" pos="15"/>
+                <bitfield name="TPC_REG_SCLK_PM_OVERRIDE" pos="16"/>
+                <bitfield name="TCF_TCA_SCLK_PM_OVERRIDE" pos="17"/>
+                <bitfield name="TCF_TCB_SCLK_PM_OVERRIDE" pos="18"/>
+                <bitfield name="TCF_TCB_READ_SCLK_PM_OVERRIDE" pos="19"/>
+                <bitfield name="TP_TP_SCLK_PM_OVERRIDE" pos="20"/>
+                <bitfield name="TP_REG_SCLK_PM_OVERRIDE" pos="21"/>
+                <bitfield name="CP_G_SCLK_PM_OVERRIDE" pos="22"/>
+                <bitfield name="CP_REG_SCLK_PM_OVERRIDE" pos="23"/>
+                <bitfield name="CP_G_REG_SCLK_PM_OVERRIDE" pos="24"/>
+                <bitfield name="SPI_SCLK_PM_OVERRIDE" pos="25"/>
+                <bitfield name="RB_REG_SCLK_PM_OVERRIDE" pos="26"/>
+                <bitfield name="RB_SCLK_PM_OVERRIDE" pos="27"/>
+                <bitfield name="MH_MH_SCLK_PM_OVERRIDE" pos="28"/>
+                <bitfield name="MH_REG_SCLK_PM_OVERRIDE" pos="29"/>
+                <bitfield name="MH_MMU_SCLK_PM_OVERRIDE" pos="30"/>
+                <bitfield name="MH_TCROQ_SCLK_PM_OVERRIDE" pos="31"/>
+        </reg32>
 	<reg32 offset="0x039d" name="RBBM_PM_OVERRIDE2"/>
 	<reg32 offset="0x03a0" name="RBBM_DEBUG_OUT"/>
 	<reg32 offset="0x03a1" name="RBBM_DEBUG_CNTL"/>
@@ -302,10 +335,19 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
 	<reg32 offset="0x0c80" name="PA_SU_DEBUG_CNTL"/>
 	<reg32 offset="0x0c81" name="GRAS_DEBUG_DATA"/>
 	<reg32 offset="0x0c81" name="PA_SU_DEBUG_DATA"/>
-	<reg32 offset="0x0c86" name="PA_SU_FACE_DATA"/>
-	<reg32 offset="0x0d00" name="SQ_GPR_MANAGEMENT"/>
+        <reg32 offset="0x0c86" name="PA_SU_FACE_DATA">
+		<bitfield name="BASE_ADDR" low="5" high="31" type="uint"/>
+        </reg32>
+        <reg32 offset="0x0d00" name="SQ_GPR_MANAGEMENT">
+		<bitfield name="REG_DYNAMIC" pos="0" type="boolean"/>
+		<bitfield name="REG_SIZE_PIX" low="4" high="11" type="uint"/>
+		<bitfield name="REG_SIZE_VTX" low="12" high="19" type="uint"/>
+        </reg32>
 	<reg32 offset="0x0d01" name="SQ_FLOW_CONTROL"/>
-	<reg32 offset="0x0d02" name="SQ_INST_STORE_MANAGMENT"/>
+        <reg32 offset="0x0d02" name="SQ_INST_STORE_MANAGMENT">
+		<bitfield name="INST_BASE_PIX" low="0" high="11" type="uint"/>
+		<bitfield name="INST_BASE_VTX" low="16" high="27" type="uint"/>
+        </reg32>
 	<reg32 offset="0x0d05" name="SQ_DEBUG_MISC"/>
 	<reg32 offset="0x0d34" name="SQ_INT_CNTL"/>
 	<reg32 offset="0x0d35" name="SQ_INT_STATUS"/>
@@ -588,8 +630,12 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
 	<reg32 offset="0x2309" name="SQ_DEBUG_MISC_0"/>
 	<reg32 offset="0x230a" name="SQ_DEBUG_MISC_1"/>
 	<reg32 offset="0x2312" name="PA_SC_AA_MASK"/>
-	<reg32 offset="0x2316" name="VGT_VERTEX_REUSE_BLOCK_CNTL"/>
-	<reg32 offset="0x2317" name="VGT_OUT_DEALLOC_CNTL"/>
+        <reg32 offset="0x2316" name="VGT_VERTEX_REUSE_BLOCK_CNTL">
+		<bitfield name="VTX_REUSE_DEPTH" low="0" high="2" type="uint"/>
+        </reg32>
+        <reg32 offset="0x2317" name="VGT_OUT_DEALLOC_CNTL">
+		<bitfield name="DEALLOC_DIST" low="0" high="1" type="uint"/>
+        </reg32>
 	<reg32 offset="0x2318" name="RB_COPY_CONTROL">
 		<bitfield name="COPY_SAMPLE_SELECT" low="0" high="2" type="a2xx_rb_copy_sample_select"/>
 		<bitfield name="DEPTH_CLEAR_ENABLE" pos="3" type="boolean"/>
